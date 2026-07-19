@@ -8,10 +8,15 @@ spring:
               uri: lb://USER-SERVICE
               predicates:
                 - Path=/users/**
+              filters:
+                - StripPrefix=1
+
             - id: notification-service
               uri: lb://NOTIFICATION-SERVICE
               predicates:
                 - Path=/notifications/**
+              filters:
+                - StripPrefix=1
 eureka:
   client:
     service-url:
